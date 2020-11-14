@@ -1,0 +1,16 @@
+src/test/resources/drivers/
+
+# Maven
+target/
+
+# NetBeans
+nb-configuration.xml
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# Idea
+.idea/
+*.iml
