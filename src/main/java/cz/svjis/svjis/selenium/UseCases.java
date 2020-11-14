@@ -1,5 +1,5 @@
 /*
- *       Main.java
+ *       UseCases.java
  *
  *       This file is part of SVJIS project.
  *       https://github.com/svjis/svjis-selenium
@@ -11,7 +11,6 @@
  */
 package cz.svjis.svjis.selenium;
 
-import static cz.svjis.svjis.selenium.SeleniumUtils.getFirefoxDriver;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 
@@ -19,15 +18,14 @@ import org.openqa.selenium.WebDriver;
  *
  * @author jarberan
  */
-public class Main {
+public class UseCases {
     
-    public static void main(String args[]) throws IOException {
-        //WebDriver driver = getGridDriver();
-        WebDriver driver = getFirefoxDriver();
-        SeleniumUtils.init(driver);
-        
-        UseCases.doParametrization(driver);
-        
-        SeleniumUtils.close(driver);
-    }  
+    public static void doParametrization(WebDriver driver) throws IOException {
+        Commands.getUrl(driver, Constants.APP_URL);
+        SeleniumUtils.takeSnapShot(driver, "test01.png");
+        Commands.loginUser(driver, Constants.APP_ADM_USER, Constants.APP_ADM_PASS);
+        SeleniumUtils.takeSnapShot(driver, "test02.png");
+        Commands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "test03.png");
+    }
 }
