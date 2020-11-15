@@ -22,10 +22,13 @@ public class UseCases {
     
     public static void doParametrization(WebDriver driver) throws IOException {
         Commands.getUrl(driver, Constants.APP_URL);
-        SeleniumUtils.takeSnapShot(driver, "test01.png");
+        SeleniumUtils.takeSnapShot(driver, "param01.png");
         Commands.loginUser(driver, Constants.APP_ADM_USER, Constants.APP_ADM_PASS);
-        SeleniumUtils.takeSnapShot(driver, "test02.png");
+        SeleniumUtils.takeSnapShot(driver, "param02.png");
+        Commands.fillInCompany(driver);
+        SeleniumUtils.takeSnapShot(driver, "param03.png");
+        Commands.fillInBuilding(driver);
+        SeleniumUtils.takeSnapShot(driver, "param04.png");
         Commands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "test03.png");
     }
 }
