@@ -44,4 +44,11 @@ public class Constants {
     public static String ADM_BUILDING_REGNO = "KAT001";
     public static String ADM_BUILDING_SAVED = "Uloženo";
     
+    public static String ADM_ENTRANCE = "Seznam vchodů (0)";
+    public static String ADM_ENTRANCE_NEW = "Přidat nový vchod";
+    public static String ADM_ENTRANCE_E1D = "vchod 1";
+    public static String ADM_ENTRANCE_E1A = "Práčská 1";
+    public static String ADM_ENTRANCE_E2D = "vchod 2";
+    public static String ADM_ENTRANCE_E2A = "Práčská 3";
+    
 }

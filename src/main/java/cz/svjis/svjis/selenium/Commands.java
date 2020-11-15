@@ -55,13 +55,28 @@ public class Commands {
     }
     
     public static void fillInBuilding(WebDriver driver) {
-        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.linkText(Constants.ADM_COMPANY));
+        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.linkText(Constants.ADM_BUILDING));
         clickAndWaitForClickable(driver, By.linkText(Constants.ADM_BUILDING), By.linkText(Constants.ADM_BUILDING));
         fillIn(driver.findElement(By.id("address-input")), Constants.ADM_BUILDING_ADDRESS);
         fillIn(driver.findElement(By.id("city-input")), Constants.ADM_BUILDING_CITY);
         fillIn(driver.findElement(By.id("postcode-input")), Constants.ADM_BUILDING_POSTCODE);
         fillIn(driver.findElement(By.id("regno-input")), Constants.ADM_BUILDING_REGNO);
         clickAndWaitForValue(driver, By.id("submit"), By.className("message"), Constants.ADM_BUILDING_SAVED);
+    }
+    
+    public static void fillInEntrances(WebDriver driver) {
+        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.linkText(Constants.ADM_ENTRANCE));
+        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_ENTRANCE), By.linkText(Constants.ADM_ENTRANCE_NEW));
+        
+        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_ENTRANCE_NEW), By.id("submit"));
+        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_ENTRANCE_E1D);
+        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_ENTRANCE_E1A);
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_ENTRANCE_NEW));
+        
+        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_ENTRANCE_NEW), By.id("submit"));
+        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_ENTRANCE_E2D);
+        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_ENTRANCE_E2A);
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_ENTRANCE_NEW));
     }
     
     private static void fillIn(WebElement e, String text) {
