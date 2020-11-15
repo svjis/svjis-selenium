@@ -79,6 +79,27 @@ public class Commands {
         clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_ENTRANCE_NEW));
     }
     
+    public static void fillInBuildingUnits(WebDriver driver) {
+        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.linkText(Constants.ADM_BU));
+        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_BU), By.linkText(Constants.ADM_BU_NEW));
+        
+        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_BU_NEW), By.id("submit"));
+        driver.findElement(By.id("type-input")).sendKeys(Constants.ADM_BU_TYPE_1);
+        fillIn(driver.findElement(By.id("regno-input")), Constants.ADM_BU_ID_1);
+        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_BU_DESC_1);
+        fillIn(driver.findElement(By.id("num-input")), Constants.ADM_BU_NUM_1);
+        fillIn(driver.findElement(By.id("deno-input")), Constants.ADM_BU_DEN_1);
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_BU_NEW));
+        
+        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_BU_NEW), By.id("submit"));
+        driver.findElement(By.id("type-input")).sendKeys(Constants.ADM_BU_TYPE_2);
+        fillIn(driver.findElement(By.id("regno-input")), Constants.ADM_BU_ID_2);
+        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_BU_DESC_2);
+        fillIn(driver.findElement(By.id("num-input")), Constants.ADM_BU_NUM_2);
+        fillIn(driver.findElement(By.id("deno-input")), Constants.ADM_BU_DEN_2);
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_BU_NEW));
+    }
+    
     private static void fillIn(WebElement e, String text) {
         e.clear();
         e.sendKeys(text);

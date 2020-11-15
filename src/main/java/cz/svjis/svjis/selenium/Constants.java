@@ -51,4 +51,17 @@ public class Constants {
     public static String ADM_ENTRANCE_E2D = "vchod 2";
     public static String ADM_ENTRANCE_E2A = "Práčská 3";
     
+    public static String ADM_BU = "Seznam jednotek (0)";
+    public static String ADM_BU_NEW = "Přidat novou jednotku";
+    public static String ADM_BU_TYPE_1 = "Byt";
+    public static String ADM_BU_ID_1 = "001";
+    public static String ADM_BU_DESC_1 = "Byt 001";
+    public static String ADM_BU_NUM_1 = "1";
+    public static String ADM_BU_DEN_1 = "10";
+    public static String ADM_BU_TYPE_2 = "Byt";
+    public static String ADM_BU_ID_2 = "002";
+    public static String ADM_BU_DESC_2 = "Byt 002";
+    public static String ADM_BU_NUM_2 = "1";
+    public static String ADM_BU_DEN_2 = "10";
+    
 }

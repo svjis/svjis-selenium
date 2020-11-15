@@ -31,6 +31,8 @@ public class UseCases {
         SeleniumUtils.takeSnapShot(driver, "param04.png");
         Commands.fillInEntrances(driver);
         SeleniumUtils.takeSnapShot(driver, "param05.png");
+        Commands.fillInBuildingUnits(driver);
+        SeleniumUtils.takeSnapShot(driver, "param06.png");
         Commands.logoutUser(driver);
     }
 }
