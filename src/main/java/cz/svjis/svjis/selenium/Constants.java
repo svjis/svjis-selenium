@@ -11,96 +11,66 @@
  */
 package cz.svjis.svjis.selenium;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 /**
  *
  * @author jarberan
  */
 public class Constants {
-    public static String APP_URL = "http://localhost:8181/SVJIS/Dispatcher?setcompany=1";
-    public static String APP_ADM_USER = "admin";
-    public static String APP_ADM_PASS = "masterkey";
-    public static String SNAPSHOT_DIR = "C:\\Users\\jarberan\\Desktop\\Screens\\";
-    public static String DRIVER_GECKO = "src\\test\\resources\\drivers\\geckodriver.exe";
+    private static Constants instance = null;
+    private Properties props;
     
-    public static String MENU_ADM = "Administrace";
+    public static Constants getInstance() throws SvjisSeleniumException {
+        if (instance == null) {
+            instance = new Constants();
+        }
+        return instance;
+    }
     
-    public static String ADM_COMPANY = "Společenství";
-    public static String ADM_COMPANY_NAME = "Společenství vlastníků domu Práčská 1";
-    public static String ADM_COMPANY_ADDRESS = "Práčská 1";
-    public static String ADM_COMPANY_CITY = "Praha";
-    public static String ADM_COMPANY_POSTCODE = "102 00";
-    public static String ADM_COMPANY_PHONE = "+420 111 111";
-    public static String ADM_COMPANY_FAX = "+420 111 112";
-    public static String ADM_COMPANY_EMAIL = "pracska@seznam.cz";
-    public static String ADM_COMPANY_REGNO = "123456";
-    public static String ADM_COMPANY_VAT_REGNO = "CZ123456";
-    public static String ADM_COMPANY_DOMAIN = "www.pracska.cz";
-    public static String ADM_COMPANY_SAVED = "Uloženo";
+    private Constants() throws SvjisSeleniumException {
+        Class cls = Constants.class;
+        ClassLoader cLoader = cls.getClassLoader();
+        try (InputStream is = cLoader.getResourceAsStream("constants.properties")) {
+            props = new Properties();
+            props.load(is);
+        } catch (IOException ex) {
+            throw new SvjisSeleniumException(ex);
+        }
+    }
     
-    public static String ADM_BUILDING = "Dům";
-    public static String ADM_BUILDING_ADDRESS = "Práčská 1";
-    public static String ADM_BUILDING_CITY = "Praha";
-    public static String ADM_BUILDING_POSTCODE = "102 00";
-    public static String ADM_BUILDING_REGNO = "KAT001";
-    public static String ADM_BUILDING_SAVED = "Uloženo";
+    public String getString(String key) throws SvjisSeleniumException {
+        String result = props.getProperty(key);
+        if (result == null) {
+            throw new SvjisSeleniumException("Key doesn't exist: " + key);
+        }
+        return result;
+        
+    }
     
-    public static String ADM_ENTRANCE = "Seznam vchodů";
-    public static String ADM_ENTRANCE_NEW = "Přidat nový vchod";
-    public static String ADM_ENTRANCE_E1D = "vchod 1";
-    public static String ADM_ENTRANCE_E1A = "Práčská 1";
-    public static String ADM_ENTRANCE_E2D = "vchod 2";
-    public static String ADM_ENTRANCE_E2A = "Práčská 3";
+    public String getString(String key, int i) throws SvjisSeleniumException {
+        key = key + "." + i;
+        return getString(key);
+    }
     
-    public static String ADM_BU = "Seznam jednotek";
-    public static String ADM_BU_NEW = "Přidat novou jednotku";
-    public static String ADM_BU_TYPE_1 = "Byt";
-    public static String ADM_BU_ID_1 = "001";
-    public static String ADM_BU_DESC_1 = "Byt 001";
-    public static String ADM_BU_NUM_1 = "1";
-    public static String ADM_BU_DEN_1 = "10";
-    public static String ADM_BU_TYPE_2 = "Byt";
-    public static String ADM_BU_ID_2 = "002";
-    public static String ADM_BU_DESC_2 = "Byt 002";
-    public static String ADM_BU_NUM_2 = "1";
-    public static String ADM_BU_DEN_2 = "10";
+    public boolean getBoolean(String key) throws SvjisSeleniumException {
+        String result = props.getProperty(key);
+        if (result == null) {
+            throw new SvjisSeleniumException("Key doesn't exist: " + key);
+        }
+        if (result.equals("true")) {
+            return true;
+        }
+        if (result.equals("false")) {
+            return false;
+        }
+        throw new SvjisSeleniumException("Bad boolean value: " + result);
+    }
     
-    public static String ADM_USER = "Seznam uživatelů";
-    public static String ADM_USER_NEW = "Přidat nového uživatele";
-    public static String ADM_USER_SAVED = "Uživatel byl uložen.";
-    public static String ADM_USER_1_SALUTATION = "Ing.";
-    public static String ADM_USER_1_FNAME = "Petr";
-    public static String ADM_USER_1_LNAME = "Staněk";
-    public static String ADM_USER_1_LANGUAGE = "Čeština";
-    public static String ADM_USER_1_INT_NOTICE = "Předseda";
-    public static String ADM_USER_1_ADDRESS = "Práčská 1";
-    public static String ADM_USER_1_CITY = "Praha";
-    public static String ADM_USER_1_POSTCODE = "102 00";
-    public static String ADM_USER_1_COUNTRY = "CZ";
-    public static String ADM_USER_1_FIXED_PHONE = "+420 111 111 111";
-    public static String ADM_USER_1_MOBILE_PHONE = "+420 608 111 111";
-    public static String ADM_USER_1_EMAIL = "petr.stanek@myseznam.cz";
-    public static boolean ADM_USER_1_SHOW_IN_CONTACTS = true;
-    public static String ADM_USER_1_LOGIN = "petr";
-    public static String ADM_USER_1_PASSWORD = "petrpass";
-    public static boolean ADM_USER_1_SEND_PASSWORD = false;
-    public static boolean ADM_USER_1_ENABLED = true;
-    public static String ADM_USER_1_ROLES = "Člen výboru;Redaktor;Vlastník";
-    public static String ADM_USER_2_SALUTATION = "Mgr.";
-    public static String ADM_USER_2_FNAME = "Jana";
-    public static String ADM_USER_2_LNAME = "Hamplová";
-    public static String ADM_USER_2_LANGUAGE = "Čeština";
-    public static String ADM_USER_2_INT_NOTICE = "Vlastník od 19.11.2020";
-    public static String ADM_USER_2_ADDRESS = "Práčská 2";
-    public static String ADM_USER_2_CITY = "Praha";
-    public static String ADM_USER_2_POSTCODE = "102 00";
-    public static String ADM_USER_2_COUNTRY = "CZ";
-    public static String ADM_USER_2_FIXED_PHONE = "+420 211 111 111";
-    public static String ADM_USER_2_MOBILE_PHONE = "+420 608 211 111";
-    public static String ADM_USER_2_EMAIL = "jana.hamplova@myseznam.cz";
-    public static boolean ADM_USER_2_SHOW_IN_CONTACTS = false;
-    public static String ADM_USER_2_LOGIN = "jana";
-    public static String ADM_USER_2_PASSWORD = "janapass";
-    public static boolean ADM_USER_2_SEND_PASSWORD = false;
-    public static boolean ADM_USER_2_ENABLED = true;
-    public static String ADM_USER_2_ROLES = "Vlastník";
+    public boolean getBoolean(String key, int i) throws SvjisSeleniumException {
+        key = key + "." + i;
+        return getBoolean(key);
+    }
 }

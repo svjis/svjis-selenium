@@ -21,7 +21,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class Main {
     
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, SvjisSeleniumException {
         //WebDriver driver = getGridDriver();
         WebDriver driver = getFirefoxDriver();
         SeleniumUtils.init(driver);

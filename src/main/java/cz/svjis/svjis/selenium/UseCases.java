@@ -20,20 +20,24 @@ import org.openqa.selenium.WebDriver;
  */
 public class UseCases {
     
-    public static void doParametrization(WebDriver driver) throws IOException {
-        Commands.getUrl(driver, Constants.APP_URL);
+    public static void doParametrization(WebDriver driver) throws IOException, SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        Commands.getUrl(driver, c.getString("app.url"));
         SeleniumUtils.takeSnapShot(driver, "param01.png");
-        Commands.loginUser(driver, Constants.APP_ADM_USER, Constants.APP_ADM_PASS);
+        Commands.loginUser(driver, c.getString("app.adm.user"), c.getString("app.adm.pass"));
         SeleniumUtils.takeSnapShot(driver, "param02.png");
         Commands.fillInCompany(driver);
         SeleniumUtils.takeSnapShot(driver, "param03.png");
         Commands.fillInBuilding(driver);
         SeleniumUtils.takeSnapShot(driver, "param04.png");
-        Commands.fillInEntrances(driver);
+        Commands.fillInEntrances(driver, 1);
+        Commands.fillInEntrances(driver, 2);
         SeleniumUtils.takeSnapShot(driver, "param05.png");
-        Commands.fillInBuildingUnits(driver);
+        Commands.fillInBuildingUnits(driver, 1);
+        Commands.fillInBuildingUnits(driver, 2);
         SeleniumUtils.takeSnapShot(driver, "param06.png");
-        Commands.fillInUsers(driver);
+        Commands.fillInUsers(driver, 1);
+        Commands.fillInUsers(driver, 2);
         SeleniumUtils.takeSnapShot(driver, "param06.png");
         Commands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "param07.png");

@@ -43,9 +43,9 @@ public class SeleniumUtils {
         driver.quit();
     }
     
-    public static WebDriver getFirefoxDriver() {
+    public static WebDriver getFirefoxDriver() throws SvjisSeleniumException {
         WebDriver driver;
-        System.setProperty("webdriver.gecko.driver", Constants.DRIVER_GECKO);
+        System.setProperty("webdriver.gecko.driver", Constants.getInstance().getString("driver.gecko"));
         FirefoxOptions options = new FirefoxOptions();
         //options.setHeadless(true);
         driver = new FirefoxDriver(options);
@@ -64,13 +64,13 @@ public class SeleniumUtils {
         return driver;
     }
     
-    public static void takeSnapShot(WebDriver webdriver, String file) throws IOException {
+    public static void takeSnapShot(WebDriver webdriver, String file) throws IOException, SvjisSeleniumException {
         //Convert web driver object to TakeScreenshot
         TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
         //Call getScreenshotAs method to create image file
         File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
         //Move image file to new destination
-        File DestFile = new File(Constants.SNAPSHOT_DIR + file);
+        File DestFile = new File(Constants.getInstance().getString("snapshot.dir") + file);
         //Copy file at destination
         FileUtils.copyFile(SrcFile, DestFile);
     }

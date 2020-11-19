@@ -39,128 +39,90 @@ public class Commands {
         clickAndWaitForClickable(driver, By.id("logout-submit"), By.id("login-submit"));
     }
     
-    public static void fillInCompany(WebDriver driver) {        
-        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.linkText(Constants.ADM_COMPANY));
-        fillIn(driver.findElement(By.id("name-input")), Constants.ADM_COMPANY_NAME);
-        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_COMPANY_ADDRESS);
-        fillIn(driver.findElement(By.id("city-input")), Constants.ADM_COMPANY_CITY);
-        fillIn(driver.findElement(By.id("postcode-input")), Constants.ADM_COMPANY_POSTCODE);
-        fillIn(driver.findElement(By.id("phone-input")), Constants.ADM_COMPANY_PHONE);
-        fillIn(driver.findElement(By.id("fax-input")), Constants.ADM_COMPANY_FAX);
-        fillIn(driver.findElement(By.id("email-input")), Constants.ADM_COMPANY_EMAIL);
-        fillIn(driver.findElement(By.id("regno-input")), Constants.ADM_COMPANY_REGNO);
-        fillIn(driver.findElement(By.id("vatregno-input")), Constants.ADM_COMPANY_VAT_REGNO);
-        fillIn(driver.findElement(By.id("idomain-input")), Constants.ADM_COMPANY_DOMAIN);
-        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), Constants.ADM_COMPANY_SAVED);
+    public static void fillInCompany(WebDriver driver) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.linkText(c.getString("adm.company")));
+        fillIn(driver.findElement(By.id("name-input")), c.getString("adm.company.name"));
+        fillIn(driver.findElement(By.id("address-input")), c.getString("adm.company.address"));
+        fillIn(driver.findElement(By.id("city-input")), c.getString("adm.company.city"));
+        fillIn(driver.findElement(By.id("postcode-input")), c.getString("adm.company.postcode"));
+        fillIn(driver.findElement(By.id("phone-input")), c.getString("adm.company.phone"));
+        fillIn(driver.findElement(By.id("fax-input")), c.getString("adm.company.fax"));
+        fillIn(driver.findElement(By.id("email-input")), c.getString("adm.company.email"));
+        fillIn(driver.findElement(By.id("regno-input")), c.getString("adm.company.regno"));
+        fillIn(driver.findElement(By.id("vatregno-input")), c.getString("adm.company.vatregno"));
+        fillIn(driver.findElement(By.id("idomain-input")), c.getString("adm.company.domain"));
+        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("adm.company.saved"));
     }
     
-    public static void fillInBuilding(WebDriver driver) {
-        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.linkText(Constants.ADM_BUILDING));
-        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_BUILDING), By.linkText(Constants.ADM_BUILDING));
-        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_BUILDING_ADDRESS);
-        fillIn(driver.findElement(By.id("city-input")), Constants.ADM_BUILDING_CITY);
-        fillIn(driver.findElement(By.id("postcode-input")), Constants.ADM_BUILDING_POSTCODE);
-        fillIn(driver.findElement(By.id("regno-input")), Constants.ADM_BUILDING_REGNO);
-        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), Constants.ADM_BUILDING_SAVED);
+    public static void fillInBuilding(WebDriver driver) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.linkText(c.getString("adm.building")));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("adm.building")), By.id("submit"));
+        fillIn(driver.findElement(By.id("address-input")), c.getString("adm.building.address"));
+        fillIn(driver.findElement(By.id("city-input")), c.getString("adm.building.city"));
+        fillIn(driver.findElement(By.id("postcode-input")), c.getString("adm.building.postcode"));
+        fillIn(driver.findElement(By.id("regno-input")), c.getString("adm.building.regno"));
+        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("adm.building.saved"));
     }
     
-    public static void fillInEntrances(WebDriver driver) {
-        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.partialLinkText(Constants.ADM_ENTRANCE));
-        clickAndWaitForClickable(driver, By.partialLinkText(Constants.ADM_ENTRANCE), By.linkText(Constants.ADM_ENTRANCE_NEW));
+    public static void fillInEntrances(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.entrance")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.entrance")), By.linkText(c.getString("adm.entrance.new")));
         
-        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_ENTRANCE_NEW), By.id("submit"));
-        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_ENTRANCE_E1D);
-        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_ENTRANCE_E1A);
-        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_ENTRANCE_NEW));
-        
-        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_ENTRANCE_NEW), By.id("submit"));
-        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_ENTRANCE_E2D);
-        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_ENTRANCE_E2A);
-        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_ENTRANCE_NEW));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("adm.entrance.new")), By.id("submit"));
+        fillIn(driver.findElement(By.id("desc-input")), c.getString("adm.entrance.ed", i));
+        fillIn(driver.findElement(By.id("address-input")), c.getString("adm.entrance.ea", i));
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(c.getString("adm.entrance.new")));
     }
     
-    public static void fillInBuildingUnits(WebDriver driver) {
-        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.partialLinkText(Constants.ADM_BU));
-        clickAndWaitForClickable(driver, By.partialLinkText(Constants.ADM_BU), By.linkText(Constants.ADM_BU_NEW));
+    public static void fillInBuildingUnits(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.bu")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.bu")), By.linkText(c.getString("adm.bu.new")));
         
-        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_BU_NEW), By.id("submit"));
-        driver.findElement(By.id("type-input")).sendKeys(Constants.ADM_BU_TYPE_1);
-        fillIn(driver.findElement(By.id("regno-input")), Constants.ADM_BU_ID_1);
-        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_BU_DESC_1);
-        fillIn(driver.findElement(By.id("num-input")), Constants.ADM_BU_NUM_1);
-        fillIn(driver.findElement(By.id("deno-input")), Constants.ADM_BU_DEN_1);
-        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_BU_NEW));
-        
-        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_BU_NEW), By.id("submit"));
-        driver.findElement(By.id("type-input")).sendKeys(Constants.ADM_BU_TYPE_2);
-        fillIn(driver.findElement(By.id("regno-input")), Constants.ADM_BU_ID_2);
-        fillIn(driver.findElement(By.id("desc-input")), Constants.ADM_BU_DESC_2);
-        fillIn(driver.findElement(By.id("num-input")), Constants.ADM_BU_NUM_2);
-        fillIn(driver.findElement(By.id("deno-input")), Constants.ADM_BU_DEN_2);
-        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(Constants.ADM_BU_NEW));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("adm.bu.new")), By.id("submit"));
+        driver.findElement(By.id("type-input")).sendKeys(c.getString("adm.bu.type", i));
+        fillIn(driver.findElement(By.id("regno-input")), c.getString("adm.bu.id", i));
+        fillIn(driver.findElement(By.id("desc-input")), c.getString("adm.bu.desc", i));
+        fillIn(driver.findElement(By.id("num-input")), c.getString("adm.bu.num", i));
+        fillIn(driver.findElement(By.id("deno-input")), c.getString("adm.bu.den", i));
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(c.getString("adm.bu.new")));
     }
     
-    public static void fillInUsers(WebDriver driver) {
-        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.partialLinkText(Constants.ADM_USER));
-        clickAndWaitForClickable(driver, By.partialLinkText(Constants.ADM_USER), By.linkText(Constants.ADM_USER_NEW));
+    public static void fillInUsers(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.user")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.user")), By.linkText(c.getString("adm.user.new")));
         
-        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_USER_NEW), By.id("submit"));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("adm.user.new")), By.id("submit"));
         
-        fillIn(driver.findElement(By.id("salutation-input")), Constants.ADM_USER_1_SALUTATION);
-        fillIn(driver.findElement(By.id("firstname-input")), Constants.ADM_USER_1_FNAME);
-        fillIn(driver.findElement(By.id("lastname-input")), Constants.ADM_USER_1_LNAME);
-        driver.findElement(By.id("lang-input")).sendKeys(Constants.ADM_USER_1_LANGUAGE);
-        fillIn(driver.findElement(By.id("note-textarea")), Constants.ADM_USER_1_INT_NOTICE);
+        fillIn(driver.findElement(By.id("salutation-input")), c.getString("adm.user.salutation", i));
+        fillIn(driver.findElement(By.id("firstname-input")), c.getString("adm.user.fname", i));
+        fillIn(driver.findElement(By.id("lastname-input")), c.getString("adm.user.lname", i));
+        driver.findElement(By.id("lang-input")).sendKeys(c.getString("adm.user.language", i));
+        fillIn(driver.findElement(By.id("note-textarea")), c.getString("adm.user.int.notice", i));
         
-        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_USER_1_ADDRESS);
-        fillIn(driver.findElement(By.id("city-input")), Constants.ADM_USER_1_CITY);
-        fillIn(driver.findElement(By.id("postcode-input")), Constants.ADM_USER_1_POSTCODE);
-        fillIn(driver.findElement(By.id("country-input")), Constants.ADM_USER_1_COUNTRY);
-        fillIn(driver.findElement(By.id("fphone-input")), Constants.ADM_USER_1_FIXED_PHONE);
-        fillIn(driver.findElement(By.id("cphone-input")), Constants.ADM_USER_1_MOBILE_PHONE);
-        fillIn(driver.findElement(By.id("email-input")), Constants.ADM_USER_1_EMAIL);
-        checkIn(driver.findElement(By.id("show-input")), Constants.ADM_USER_1_SHOW_IN_CONTACTS);
+        fillIn(driver.findElement(By.id("address-input")), c.getString("adm.user.address", i));
+        fillIn(driver.findElement(By.id("city-input")), c.getString("adm.user.city", i));
+        fillIn(driver.findElement(By.id("postcode-input")), c.getString("adm.user.postcode", i));
+        fillIn(driver.findElement(By.id("country-input")), c.getString("adm.user.country", i));
+        fillIn(driver.findElement(By.id("fphone-input")), c.getString("adm.user.fixed.phone", i));
+        fillIn(driver.findElement(By.id("cphone-input")), c.getString("adm.user.mobile.phone", i));
+        fillIn(driver.findElement(By.id("email-input")), c.getString("adm.user.email", i));
+        checkIn(driver.findElement(By.id("show-input")), c.getBoolean("adm.user.show.in.contacts", i));
         
-        fillIn(driver.findElement(By.id("lname-input")), Constants.ADM_USER_1_LOGIN);
-        fillIn(driver.findElement(By.id("lpass-input")), Constants.ADM_USER_1_PASSWORD);
-        checkIn(driver.findElement(By.id("sendc-input")), Constants.ADM_USER_1_SEND_PASSWORD);
-        checkIn(driver.findElement(By.id("enabled-input")), Constants.ADM_USER_1_ENABLED);
+        fillIn(driver.findElement(By.id("lname-input")), c.getString("adm.user.login", i));
+        fillIn(driver.findElement(By.id("lpass-input")), c.getString("adm.user.password", i));
+        checkIn(driver.findElement(By.id("sendc-input")), c.getBoolean("adm.user.send.password", i));
+        checkIn(driver.findElement(By.id("enabled-input")), c.getBoolean("adm.user.enabled", i));
         
-        String role[] = Constants.ADM_USER_1_ROLES.split(";");
+        String role[] = c.getString("adm.user.roles", i).split(";");
         for (String r : role) {
             checkIn(driver.findElement(By.xpath("//label[contains(text(), '" + r + "')]/../input")), true);
         }
-        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), Constants.ADM_USER_SAVED);
-        
-        clickAndWaitForClickable(driver, By.linkText(Constants.MENU_ADM), By.partialLinkText(Constants.ADM_USER));
-        clickAndWaitForClickable(driver, By.partialLinkText(Constants.ADM_USER), By.linkText(Constants.ADM_USER_NEW));
-        
-        clickAndWaitForClickable(driver, By.linkText(Constants.ADM_USER_NEW), By.id("submit"));
-        fillIn(driver.findElement(By.id("salutation-input")), Constants.ADM_USER_2_SALUTATION);
-        fillIn(driver.findElement(By.id("firstname-input")), Constants.ADM_USER_2_FNAME);
-        fillIn(driver.findElement(By.id("lastname-input")), Constants.ADM_USER_2_LNAME);
-        driver.findElement(By.id("lang-input")).sendKeys(Constants.ADM_USER_2_LANGUAGE);
-        fillIn(driver.findElement(By.id("note-textarea")), Constants.ADM_USER_2_INT_NOTICE);
-        
-        fillIn(driver.findElement(By.id("address-input")), Constants.ADM_USER_2_ADDRESS);
-        fillIn(driver.findElement(By.id("city-input")), Constants.ADM_USER_2_CITY);
-        fillIn(driver.findElement(By.id("postcode-input")), Constants.ADM_USER_2_POSTCODE);
-        fillIn(driver.findElement(By.id("country-input")), Constants.ADM_USER_2_COUNTRY);
-        fillIn(driver.findElement(By.id("fphone-input")), Constants.ADM_USER_2_FIXED_PHONE);
-        fillIn(driver.findElement(By.id("cphone-input")), Constants.ADM_USER_2_MOBILE_PHONE);
-        fillIn(driver.findElement(By.id("email-input")), Constants.ADM_USER_2_EMAIL);
-        checkIn(driver.findElement(By.id("show-input")), Constants.ADM_USER_2_SHOW_IN_CONTACTS);
-        
-        fillIn(driver.findElement(By.id("lname-input")), Constants.ADM_USER_2_LOGIN);
-        fillIn(driver.findElement(By.id("lpass-input")), Constants.ADM_USER_2_PASSWORD);
-        checkIn(driver.findElement(By.id("sendc-input")), Constants.ADM_USER_2_SEND_PASSWORD);
-        checkIn(driver.findElement(By.id("enabled-input")), Constants.ADM_USER_2_ENABLED);
-        
-        role = Constants.ADM_USER_2_ROLES.split(";");
-        for (String r : role) {
-            checkIn(driver.findElement(By.xpath("//label[contains(text(), '" + r + "')]/../input")), true);
-        }
-        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), Constants.ADM_USER_SAVED);
+        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("adm.user.saved"));
     }
     
     private static void fillIn(WebElement e, String text) {
