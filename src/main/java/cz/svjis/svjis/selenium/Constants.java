@@ -44,14 +44,14 @@ public class Constants {
     public static String ADM_BUILDING_REGNO = "KAT001";
     public static String ADM_BUILDING_SAVED = "Uloženo";
     
-    public static String ADM_ENTRANCE = "Seznam vchodů (0)";
+    public static String ADM_ENTRANCE = "Seznam vchodů";
     public static String ADM_ENTRANCE_NEW = "Přidat nový vchod";
     public static String ADM_ENTRANCE_E1D = "vchod 1";
     public static String ADM_ENTRANCE_E1A = "Práčská 1";
     public static String ADM_ENTRANCE_E2D = "vchod 2";
     public static String ADM_ENTRANCE_E2A = "Práčská 3";
     
-    public static String ADM_BU = "Seznam jednotek (0)";
+    public static String ADM_BU = "Seznam jednotek";
     public static String ADM_BU_NEW = "Přidat novou jednotku";
     public static String ADM_BU_TYPE_1 = "Byt";
     public static String ADM_BU_ID_1 = "001";
@@ -64,4 +64,43 @@ public class Constants {
     public static String ADM_BU_NUM_2 = "1";
     public static String ADM_BU_DEN_2 = "10";
     
+    public static String ADM_USER = "Seznam uživatelů";
+    public static String ADM_USER_NEW = "Přidat nového uživatele";
+    public static String ADM_USER_SAVED = "Uživatel byl uložen.";
+    public static String ADM_USER_1_SALUTATION = "Ing.";
+    public static String ADM_USER_1_FNAME = "Petr";
+    public static String ADM_USER_1_LNAME = "Staněk";
+    public static String ADM_USER_1_LANGUAGE = "Čeština";
+    public static String ADM_USER_1_INT_NOTICE = "Předseda";
+    public static String ADM_USER_1_ADDRESS = "Práčská 1";
+    public static String ADM_USER_1_CITY = "Praha";
+    public static String ADM_USER_1_POSTCODE = "102 00";
+    public static String ADM_USER_1_COUNTRY = "CZ";
+    public static String ADM_USER_1_FIXED_PHONE = "+420 111 111 111";
+    public static String ADM_USER_1_MOBILE_PHONE = "+420 608 111 111";
+    public static String ADM_USER_1_EMAIL = "petr.stanek@myseznam.cz";
+    public static boolean ADM_USER_1_SHOW_IN_CONTACTS = true;
+    public static String ADM_USER_1_LOGIN = "petr";
+    public static String ADM_USER_1_PASSWORD = "petrpass";
+    public static boolean ADM_USER_1_SEND_PASSWORD = false;
+    public static boolean ADM_USER_1_ENABLED = true;
+    public static String ADM_USER_1_ROLES = "Člen výboru;Redaktor;Vlastník";
+    public static String ADM_USER_2_SALUTATION = "Mgr.";
+    public static String ADM_USER_2_FNAME = "Jana";
+    public static String ADM_USER_2_LNAME = "Hamplová";
+    public static String ADM_USER_2_LANGUAGE = "Čeština";
+    public static String ADM_USER_2_INT_NOTICE = "Vlastník od 19.11.2020";
+    public static String ADM_USER_2_ADDRESS = "Práčská 2";
+    public static String ADM_USER_2_CITY = "Praha";
+    public static String ADM_USER_2_POSTCODE = "102 00";
+    public static String ADM_USER_2_COUNTRY = "CZ";
+    public static String ADM_USER_2_FIXED_PHONE = "+420 211 111 111";
+    public static String ADM_USER_2_MOBILE_PHONE = "+420 608 211 111";
+    public static String ADM_USER_2_EMAIL = "jana.hamplova@myseznam.cz";
+    public static boolean ADM_USER_2_SHOW_IN_CONTACTS = false;
+    public static String ADM_USER_2_LOGIN = "jana";
+    public static String ADM_USER_2_PASSWORD = "janapass";
+    public static boolean ADM_USER_2_SEND_PASSWORD = false;
+    public static boolean ADM_USER_2_ENABLED = true;
+    public static String ADM_USER_2_ROLES = "Vlastník";
 }
