@@ -125,6 +125,17 @@ public class Commands {
         clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("adm.user.saved"));
     }
     
+    public static void fillInBoard(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.board")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.board")), By.linkText(c.getString("adm.board.new")));
+        
+        clickAndWaitForClickable(driver, By.linkText(c.getString("adm.board.new")), By.id("submit"));
+        driver.findElement(By.id("user-input")).sendKeys(c.getString("adm.board.user", i));
+        driver.findElement(By.id("type-input")).sendKeys(c.getString("adm.board.type", i));
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(c.getString("adm.board.new")));
+    }
+    
     private static void fillIn(WebElement e, String text) {
         e.clear();
         e.sendKeys(text);
