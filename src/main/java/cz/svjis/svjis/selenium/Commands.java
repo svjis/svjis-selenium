@@ -11,6 +11,7 @@
  */
 package cz.svjis.svjis.selenium;
 
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -134,6 +135,25 @@ public class Commands {
         driver.findElement(By.id("user-input")).sendKeys(c.getString("adm.board.user", i));
         driver.findElement(By.id("type-input")).sendKeys(c.getString("adm.board.type", i));
         clickAndWaitForClickable(driver, By.id("submit"), By.linkText(c.getString("adm.board.new")));
+    }
+    
+    public static void fillInUserUnit(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.userunit")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.userunit")), By.linkText(c.getString("adm.user.new")));
+        
+        WebElement baseTable = driver.findElement(By.xpath("//table[@class='list']"));
+        List<WebElement> tableRows = baseTable.findElements(By.tagName("tr"));
+        int r = 0;
+        for(WebElement e : tableRows) {
+            r++;
+            if (e.getText().contains(c.getString("adm.userunit.user", i))) {
+                break;
+            }
+        }
+        clickAndWaitForClickable(driver, By.xpath("//table[@class='list']/tbody/tr[" + r + "]/td[3]"), By.id("submit"));
+        driver.findElement(By.id("unit-input")).sendKeys(c.getString("adm.userunit.flat", i));
+        clickAndWaitForClickable(driver, By.id("submit"), By.id("submit"));
     }
     
     private static void fillIn(WebElement e, String text) {
