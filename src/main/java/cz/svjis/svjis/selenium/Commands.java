@@ -156,6 +156,21 @@ public class Commands {
         clickAndWaitForClickable(driver, By.id("submit"), By.id("submit"));
     }
     
+    public static void fillInRoles(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.role")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.role")), By.linkText(c.getString("adm.role.new")));
+        
+        clickAndWaitForClickable(driver, By.linkText(c.getString("adm.role.new")), By.id("submit"));
+        driver.findElement(By.id("name-input")).sendKeys(c.getString("adm.role.name", i));
+        
+        String role[] = c.getString("adm.role.perms", i).split(";");
+        for (String r : role) {
+            checkIn(driver.findElement(By.xpath("//label[contains(text(), '" + r + "')]/../input")), true);
+        }
+        clickAndWaitForClickable(driver, By.id("submit"), By.linkText(c.getString("adm.role.new")));
+    }
+    
     private static void fillIn(WebElement e, String text) {
         e.clear();
         e.sendKeys(text);

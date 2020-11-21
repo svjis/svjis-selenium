@@ -36,15 +36,18 @@ public class UseCases {
         Commands.fillInBuildingUnits(driver, 1);
         Commands.fillInBuildingUnits(driver, 2);
         SeleniumUtils.takeSnapShot(driver, "param06.png");
+        Commands.fillInRoles(driver, 1);
+        SeleniumUtils.takeSnapShot(driver, "param07.png");
         Commands.fillInUsers(driver, 1);
         Commands.fillInUsers(driver, 2);
-        SeleniumUtils.takeSnapShot(driver, "param07.png");
-        Commands.fillInBoard(driver, 1);
+        Commands.fillInUsers(driver, 3);
         SeleniumUtils.takeSnapShot(driver, "param08.png");
+        Commands.fillInBoard(driver, 1);
+        SeleniumUtils.takeSnapShot(driver, "param09.png");
         Commands.fillInUserUnit(driver, 1); 
         Commands.fillInUserUnit(driver, 2);
-        SeleniumUtils.takeSnapShot(driver, "param09.png");
-        Commands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "param10.png");
+        Commands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "param11.png");
     }
 }
