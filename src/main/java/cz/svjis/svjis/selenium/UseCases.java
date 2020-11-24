@@ -11,6 +11,8 @@
  */
 package cz.svjis.svjis.selenium;
 
+import cz.svjis.svjis.selenium.commands.AdminCommands;
+import cz.svjis.svjis.selenium.commands.RedactionCommands;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 
@@ -22,43 +24,53 @@ public class UseCases {
     
     public static void doParametrization(WebDriver driver) throws IOException, SvjisSeleniumException {
         Constants c = Constants.getInstance();
-        Commands.getUrl(driver, c.getString("app.url"));
+        
+        AdminCommands.loginUser(driver, c.getString("app.adm.user"), c.getString("app.adm.pass"));
         SeleniumUtils.takeSnapShot(driver, "param01.png");
-        Commands.loginUser(driver, c.getString("app.adm.user"), c.getString("app.adm.pass"));
+        AdminCommands.fillInCompany(driver);
         SeleniumUtils.takeSnapShot(driver, "param02.png");
-        Commands.fillInCompany(driver);
+        AdminCommands.fillInBuilding(driver);
         SeleniumUtils.takeSnapShot(driver, "param03.png");
-        Commands.fillInBuilding(driver);
+        AdminCommands.fillInEntrances(driver, 1);
+        AdminCommands.fillInEntrances(driver, 2);
         SeleniumUtils.takeSnapShot(driver, "param04.png");
-        Commands.fillInEntrances(driver, 1);
-        Commands.fillInEntrances(driver, 2);
+        AdminCommands.fillInBuildingUnits(driver, 1);
+        AdminCommands.fillInBuildingUnits(driver, 2);
+        AdminCommands.fillInBuildingUnits(driver, 3);
+        AdminCommands.fillInBuildingUnits(driver, 4);
         SeleniumUtils.takeSnapShot(driver, "param05.png");
-        Commands.fillInBuildingUnits(driver, 1);
-        Commands.fillInBuildingUnits(driver, 2);
-        Commands.fillInBuildingUnits(driver, 3);
-        Commands.fillInBuildingUnits(driver, 4);
+        AdminCommands.fillInRoles(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "param06.png");
-        Commands.fillInRoles(driver, 1);
+        AdminCommands.fillInUsers(driver, 1);
+        AdminCommands.fillInUsers(driver, 2);
+        AdminCommands.fillInUsers(driver, 3);
+        AdminCommands.fillInUsers(driver, 4);
+        AdminCommands.fillInUsers(driver, 5);
+        AdminCommands.fillInUsers(driver, 6);
         SeleniumUtils.takeSnapShot(driver, "param07.png");
-        Commands.fillInUsers(driver, 1);
-        Commands.fillInUsers(driver, 2);
-        Commands.fillInUsers(driver, 3);
-        Commands.fillInUsers(driver, 4);
-        Commands.fillInUsers(driver, 5);
-        Commands.fillInUsers(driver, 6);
+        AdminCommands.fillInBoard(driver, 1);
+        AdminCommands.fillInBoard(driver, 2);
+        AdminCommands.fillInBoard(driver, 3);
+        AdminCommands.fillInBoard(driver, 4);
         SeleniumUtils.takeSnapShot(driver, "param08.png");
-        Commands.fillInBoard(driver, 1);
-        Commands.fillInBoard(driver, 2);
-        Commands.fillInBoard(driver, 3);
-        Commands.fillInBoard(driver, 4);
+        AdminCommands.fillInUserUnit(driver, 1); 
+        AdminCommands.fillInUserUnit(driver, 2);
+        AdminCommands.fillInUserUnit(driver, 3);
+        AdminCommands.fillInUserUnit(driver, 4);
+        AdminCommands.fillInUserUnit(driver, 5);
         SeleniumUtils.takeSnapShot(driver, "param09.png");
-        Commands.fillInUserUnit(driver, 1); 
-        Commands.fillInUserUnit(driver, 2);
-        Commands.fillInUserUnit(driver, 3);
-        Commands.fillInUserUnit(driver, 4);
-        Commands.fillInUserUnit(driver, 5);
+        AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "param10.png");
-        Commands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "param11.png");
+    }
+    
+    public static void doRedactionTest(WebDriver driver) throws IOException, SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
+        SeleniumUtils.takeSnapShot(driver, "redaction01.png");
+        RedactionCommands.createArticle(driver, 1);
+        SeleniumUtils.takeSnapShot(driver, "redaction02.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "redaction03.png");
     }
 }

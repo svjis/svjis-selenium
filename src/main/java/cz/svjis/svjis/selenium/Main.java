@@ -11,6 +11,7 @@
  */
 package cz.svjis.svjis.selenium;
 
+import cz.svjis.svjis.selenium.commands.AdminCommands;
 import static cz.svjis.svjis.selenium.SeleniumUtils.getFirefoxDriver;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
@@ -25,8 +26,10 @@ public class Main {
         //WebDriver driver = getGridDriver();
         WebDriver driver = getFirefoxDriver();
         SeleniumUtils.init(driver);
+        AdminCommands.getUrl(driver, Constants.getInstance().getString("app.url"));
         
         UseCases.doParametrization(driver);
+        UseCases.doRedactionTest(driver);
         
         SeleniumUtils.close(driver);
     }  

@@ -1,5 +1,5 @@
 /*
- *       Commands.java
+ *       AdminCommands.java
  *
  *       This file is part of SVJIS project.
  *       https://github.com/svjis/svjis-selenium
@@ -9,24 +9,20 @@
  *       the Free Software Foundation; either version 3 of the License, or
  *       (at your option) any later version. <http://www.gnu.org/licenses/>
  */
-package cz.svjis.svjis.selenium;
+package cz.svjis.svjis.selenium.commands;
 
+import cz.svjis.svjis.selenium.Constants;
+import cz.svjis.svjis.selenium.SvjisSeleniumException;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
  * @author jarberan
  */
-public class Commands {
-    
-    public static void getUrl(WebDriver driver, String url) {
-        driver.get(url);
-    }
+public class AdminCommands extends Commands {
     
     public static void loginUser(WebDriver driver, String user, String password) {        
         WebElement usernameInput = driver.findElement(By.id("login-input"));
@@ -169,40 +165,5 @@ public class Commands {
             checkIn(driver.findElement(By.xpath("//label[contains(text(), '" + r + "')]/../input")), true);
         }
         clickAndWaitForClickable(driver, By.id("submit"), By.linkText(c.getString("adm.role.new")));
-    }
-    
-    private static void fillIn(WebElement e, String text) {
-        e.clear();
-        e.sendKeys(text);
-    }
-    
-    private static void checkIn(WebElement e, boolean checked) {
-        if (checked && !e.isSelected()) {
-            e.click();
-        }
-        
-        if (!checked && e.isSelected()) {
-            e.click();
-        }
-    }
-    
-    private static void clickAndWaitForClickable(WebDriver driver, By clickBy, By expectedBy) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        driver.findElement(clickBy).click();
-        wait.until(
-            ExpectedConditions.or(
-                ExpectedConditions.elementToBeClickable(driver.findElement(expectedBy))
-            )
-        );
-    }
-    
-    private static void clickAndWaitForValue(WebDriver driver, By clickBy, By expectedBy, String expectedValue) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        driver.findElement(clickBy).click();
-        wait.until(
-            ExpectedConditions.or(
-                ExpectedConditions.textToBe(expectedBy, expectedValue)
-            )
-        );
     }
 }
