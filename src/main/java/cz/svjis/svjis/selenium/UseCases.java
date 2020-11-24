@@ -70,7 +70,9 @@ public class UseCases {
         SeleniumUtils.takeSnapShot(driver, "redaction01.png");
         RedactionCommands.createArticle(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "redaction02.png");
-        AdminCommands.logoutUser(driver);
+        RedactionCommands.createNews(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "redaction03.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "redaction04.png");
     }
 }

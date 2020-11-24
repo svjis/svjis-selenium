@@ -55,7 +55,19 @@ public class RedactionCommands extends Commands {
         for (String r : role) {
             checkIn(driver.findElement(By.xpath("//label[contains(text(), '" + r + "')]/../input")), true);
         }
-        clickAndWaitForClickable(driver, By.id("submit"), By.id("file-submit"));
+        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("saved"));
     }
     
+    public static void createNews(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.redaction")), By.partialLinkText(c.getString("redaction.news")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("redaction.news")), By.linkText(c.getString("redaction.news.new")));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("redaction.news.new")), By.id("submit"));
+        
+        fillIn(driver.findElement(By.id("body-textarea")), c.getString("redaction.news.body", i));
+        driver.findElement(By.id("lang-input")).sendKeys(c.getString("redaction.news.lang", i));
+        checkIn(driver.findElement(By.id("publish-input")), c.getBoolean("redaction.news.publish", i));
+
+        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("saved"));
+    }
 }
