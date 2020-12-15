@@ -70,4 +70,30 @@ public class RedactionCommands extends Commands {
 
         clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("saved"));
     }
+    
+    public static void createInquiry(WebDriver driver, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.redaction")), By.partialLinkText(c.getString("redaction.inquiry")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("redaction.inquiry")), By.linkText(c.getString("redaction.inquiry.new")));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("redaction.inquiry.new")), By.id("submit"));
+        
+        fillIn(driver.findElement(By.id("desc-textarea")), c.getString("redaction.inquiry.body", i));
+        
+        fillIn(driver.findElement(By.id("o1-input")), c.getString("redaction.inquiry.q1", i));
+        driver.findElement(By.id("add-option")).click();
+        fillIn(driver.findElement(By.id("o2-input")), c.getString("redaction.inquiry.q2", i));
+        driver.findElement(By.id("add-option")).click();
+        fillIn(driver.findElement(By.id("o3-input")), c.getString("redaction.inquiry.q3", i));
+        
+        checkIn(driver.findElement(By.id("publish-input")), true);
+        clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("saved"));
+    }
+    
+    public static void voteInquiry(WebDriver driver, String vote, int i) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText("Články"), By.id("vote-submit"));
+        driver.findElement(By.id(vote)).click();
+        driver.findElement(By.id("vote-submit")).click();
+        driver.findElement(By.id("vote-result"));
+    }
 }

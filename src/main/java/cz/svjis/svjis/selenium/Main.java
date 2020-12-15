@@ -30,6 +30,7 @@ public class Main {
         
         UseCases.doParametrization(driver);
         UseCases.doRedactionTest(driver);
+        UseCases.doEndUserTest(driver);
         
         SeleniumUtils.close(driver);
     }  

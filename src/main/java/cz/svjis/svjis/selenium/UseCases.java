@@ -72,7 +72,45 @@ public class UseCases {
         SeleniumUtils.takeSnapShot(driver, "redaction02.png");
         RedactionCommands.createNews(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "redaction03.png");
-        AdminCommands.logoutUser(driver);
+        RedactionCommands.createInquiry(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "redaction04.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "redaction05.png");
+    }
+    
+    public static void doEndUserTest(WebDriver driver) throws IOException, SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        
+        /* Petr */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
+        SeleniumUtils.takeSnapShot(driver, "euser01.png");
+        RedactionCommands.voteInquiry(driver, "vote-1", 1);
+        SeleniumUtils.takeSnapShot(driver, "euser02.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "euser03.png");
+        
+        /* Jana */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
+        SeleniumUtils.takeSnapShot(driver, "euser04.png");
+        RedactionCommands.voteInquiry(driver, "vote-1", 1);
+        SeleniumUtils.takeSnapShot(driver, "euser05.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "euser06.png");
+        
+        /* Jiri */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
+        SeleniumUtils.takeSnapShot(driver, "euser07.png");
+        RedactionCommands.voteInquiry(driver, "vote-3", 1);
+        SeleniumUtils.takeSnapShot(driver, "euser08.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "euser09.png");
+        
+        /* Tomas */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 6), c.getString("adm.user.password", 6));
+        SeleniumUtils.takeSnapShot(driver, "euser10.png");
+        RedactionCommands.voteInquiry(driver, "vote-2", 1);
+        SeleniumUtils.takeSnapShot(driver, "euser11.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "euser12.png");
     }
 }
