@@ -12,6 +12,7 @@
 package cz.svjis.svjis.selenium;
 
 import cz.svjis.svjis.selenium.commands.AdminCommands;
+import cz.svjis.svjis.selenium.commands.EndUserCommands;
 import cz.svjis.svjis.selenium.commands.RedactionCommands;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
@@ -84,7 +85,7 @@ public class UseCases {
         /* Petr */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
         SeleniumUtils.takeSnapShot(driver, "euser01.png");
-        RedactionCommands.voteInquiry(driver, "vote-1", 1);
+        EndUserCommands.voteInquiry(driver, "vote-1", 1);
         SeleniumUtils.takeSnapShot(driver, "euser02.png");
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser03.png");
@@ -92,7 +93,7 @@ public class UseCases {
         /* Jana */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
         SeleniumUtils.takeSnapShot(driver, "euser04.png");
-        RedactionCommands.voteInquiry(driver, "vote-1", 1);
+        EndUserCommands.voteInquiry(driver, "vote-1", 1);
         SeleniumUtils.takeSnapShot(driver, "euser05.png");
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser06.png");
@@ -100,7 +101,7 @@ public class UseCases {
         /* Jiri */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
         SeleniumUtils.takeSnapShot(driver, "euser07.png");
-        RedactionCommands.voteInquiry(driver, "vote-3", 1);
+        EndUserCommands.voteInquiry(driver, "vote-3", 1);
         SeleniumUtils.takeSnapShot(driver, "euser08.png");
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser09.png");
@@ -108,9 +109,17 @@ public class UseCases {
         /* Tomas */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 6), c.getString("adm.user.password", 6));
         SeleniumUtils.takeSnapShot(driver, "euser10.png");
-        RedactionCommands.voteInquiry(driver, "vote-2", 1);
+        EndUserCommands.voteInquiry(driver, "vote-2", 1);
         SeleniumUtils.takeSnapShot(driver, "euser11.png");
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser12.png");
+        
+        /* Article comment */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
+        SeleniumUtils.takeSnapShot(driver, "euser13.png");
+        EndUserCommands.createArticleComment(driver, c.getString("redaction.articles.header", 1) , "Dobrý den,\nprosím podívejte se na https://www.seznam.cz/\n S pozdravem " + c.getString("adm.user.email", 5));
+        SeleniumUtils.takeSnapShot(driver, "euser14.png");
+        AdminCommands.logoutUser(driver);
+        SeleniumUtils.takeSnapShot(driver, "euser15.png");
     }
 }

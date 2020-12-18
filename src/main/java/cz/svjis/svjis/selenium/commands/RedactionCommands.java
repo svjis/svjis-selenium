@@ -88,12 +88,4 @@ public class RedactionCommands extends Commands {
         checkIn(driver.findElement(By.id("publish-input")), true);
         clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("saved"));
     }
-    
-    public static void voteInquiry(WebDriver driver, String vote, int i) throws SvjisSeleniumException {
-        Constants c = Constants.getInstance();
-        clickAndWaitForClickable(driver, By.linkText("Články"), By.id("vote-submit"));
-        driver.findElement(By.id(vote)).click();
-        driver.findElement(By.id("vote-submit")).click();
-        driver.findElement(By.id("vote-result"));
-    }
 }
