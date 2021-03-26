@@ -63,6 +63,19 @@ public class AdminCommands extends Commands {
         clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("adm.building.saved"));
     }
     
+    public static void uploadPicture(WebDriver driver) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.linkText(c.getString("adm.building")));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("adm.building")), By.id("submit"));
+        //System.out.println("===> " + Constants.getInstance().getResourcePath("Header_1.png"));
+        WebElement elem = driver.findElement(By.id("picture-upload"));
+        //elem.click();
+        //JavascriptExecutor js = (JavascriptExecutor) driver;
+        //js.executeScript("arguments[0].click();", elem);
+        elem.sendKeys(Constants.getInstance().getResourcePath("Header_1.png"));
+        driver.findElement(By.id("picture-submit")).click();
+    }
+    
     public static void fillInEntrances(WebDriver driver, int i) throws SvjisSeleniumException {
         Constants c = Constants.getInstance();
         clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.entrance")));

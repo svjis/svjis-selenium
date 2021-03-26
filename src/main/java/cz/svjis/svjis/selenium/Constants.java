@@ -73,4 +73,10 @@ public class Constants {
         key = key + "." + i;
         return getBoolean(key);
     }
+    
+    public String getResourcePath(String resource) {
+        Class cls = Constants.class;
+        ClassLoader cLoader = cls.getClassLoader();
+        return cLoader.getResource(resource).toString().replace("file:/", "");
+    }
 }
