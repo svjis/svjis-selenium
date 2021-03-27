@@ -21,6 +21,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -49,6 +50,13 @@ public class SeleniumUtils {
         FirefoxOptions options = new FirefoxOptions();
         //options.setHeadless(true);
         driver = new FirefoxDriver(options);
+        return driver;
+    }
+    
+    public static WebDriver getChromeDriver() throws SvjisSeleniumException {
+        WebDriver driver;
+        System.setProperty("webdriver.chrome.driver", Constants.getInstance().getString("driver.chrome"));
+        driver = new ChromeDriver();
         return driver;
     }
 

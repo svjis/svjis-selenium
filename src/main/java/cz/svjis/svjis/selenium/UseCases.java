@@ -29,7 +29,7 @@ public class UseCases {
         AdminCommands.loginUser(driver, c.getString("app.adm.user"), c.getString("app.adm.pass"));
         SeleniumUtils.takeSnapShot(driver, "param01.png");
         AdminCommands.fillInCompany(driver);
-        //AdminCommands.uploadPicture(driver);
+        AdminCommands.uploadPicture(driver);
         SeleniumUtils.takeSnapShot(driver, "param02.png");
         AdminCommands.fillInBuilding(driver);
         SeleniumUtils.takeSnapShot(driver, "param03.png");
