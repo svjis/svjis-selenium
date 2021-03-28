@@ -56,6 +56,13 @@ public class RedactionCommands extends Commands {
             checkIn(driver.findElement(By.xpath("//label[contains(text(), '" + r + "')]/../input")), true);
         }
         clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("saved"));
+        
+        String attachment = c.getString("redaction.articles.attachment", i);
+        if ((attachment != null) && (!attachment.equals(""))) {
+            WebElement elem = driver.findElement(By.id("file-upload"));
+            elem.sendKeys(Constants.getInstance().getResourcePath(attachment));
+            driver.findElement(By.id("file-submit")).click();
+        }
     }
     
     public static void createNews(WebDriver driver, int i) throws SvjisSeleniumException {

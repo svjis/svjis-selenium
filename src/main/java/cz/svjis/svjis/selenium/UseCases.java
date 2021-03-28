@@ -71,6 +71,8 @@ public class UseCases {
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
         SeleniumUtils.takeSnapShot(driver, "redaction01.png");
         RedactionCommands.createArticle(driver, 1);
+        RedactionCommands.createArticle(driver, 2);
+        RedactionCommands.createArticle(driver, 3);
         SeleniumUtils.takeSnapShot(driver, "redaction02.png");
         RedactionCommands.createNews(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "redaction03.png");

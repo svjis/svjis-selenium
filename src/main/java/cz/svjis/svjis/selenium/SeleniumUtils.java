@@ -73,12 +73,16 @@ public class SeleniumUtils {
     }
     
     public static void takeSnapShot(WebDriver webdriver, String file) throws IOException, SvjisSeleniumException {
+        String snapshotDir = Constants.getInstance().getString("snapshot.dir");
+        if ((snapshotDir == null) || (snapshotDir.equals("")))
+            return;
+        
         //Convert web driver object to TakeScreenshot
         TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
         //Call getScreenshotAs method to create image file
         File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
         //Move image file to new destination
-        File DestFile = new File(Constants.getInstance().getString("snapshot.dir") + file);
+        File DestFile = new File(snapshotDir + file);
         //Copy file at destination
         FileUtils.copyFile(SrcFile, DestFile);
     }
