@@ -71,8 +71,14 @@ public class UseCases {
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
         SeleniumUtils.takeSnapShot(driver, "redaction01.png");
         RedactionCommands.createArticle(driver, 1);
+        AdminCommands.logoutUser(driver);
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 4), c.getString("adm.user.password", 4));
         RedactionCommands.createArticle(driver, 2);
+        AdminCommands.logoutUser(driver);
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
         RedactionCommands.createArticle(driver, 3);
+        AdminCommands.logoutUser(driver);
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
         SeleniumUtils.takeSnapShot(driver, "redaction02.png");
         RedactionCommands.createNews(driver, 1);
         RedactionCommands.createNews(driver, 2);
