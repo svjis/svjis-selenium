@@ -75,6 +75,7 @@ public class UseCases {
         RedactionCommands.createArticle(driver, 3);
         SeleniumUtils.takeSnapShot(driver, "redaction02.png");
         RedactionCommands.createNews(driver, 1);
+        RedactionCommands.createNews(driver, 2);
         SeleniumUtils.takeSnapShot(driver, "redaction03.png");
         RedactionCommands.createInquiry(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "redaction04.png");
