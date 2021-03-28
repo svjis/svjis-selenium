@@ -10,13 +10,4 @@ Ujistěte se, že aplikace SVJIS běží na adrese http://localhost:8080. Spusti
 Zjistěte jakou verzi prohližeče Chrome máte nainstalovanou na vašem počítači a stáhněte odpovídající verzi [chromedriveru](https://chromedriver.chromium.org/downloads). Tu nakopírujte do `src/test/resources/drivers/`.
 
 
-Nyní můžete test zkompilovat:
-
-```
-mvn clean install
-```
-
-a spustit:
-```
-java -jar target/svjis-selenium-1.0.0-SNAPSHOT.jar
-```
+Nyní můžete test zkompilovat a spustit.
