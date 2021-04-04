@@ -12,6 +12,8 @@ import java.io.IOException;
  * @author jarberan
  */
 public class SvjisSeleniumException extends Exception {
+    
+    private static final long serialVersionUID = -6967396863637035108L;
 
     /**
      * Creates a new instance of <code>SvjisSeleniumException</code> without

@@ -31,7 +31,7 @@ public class Constants {
     }
     
     private Constants() throws SvjisSeleniumException {
-        Class cls = Constants.class;
+        Class<Constants> cls = Constants.class;
         ClassLoader cLoader = cls.getClassLoader();
         try (InputStream is = cLoader.getResourceAsStream("constants.properties")) {
             props = new Properties();
@@ -75,7 +75,7 @@ public class Constants {
     }
     
     public String getResourcePath(String resource) {
-        Class cls = Constants.class;
+        Class<Constants> cls = Constants.class;
         ClassLoader cLoader = cls.getClassLoader();
         return cLoader.getResource(resource).toString().replace("file:/", "");
     }

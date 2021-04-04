@@ -11,10 +11,7 @@
  */
 package cz.svjis.svjis.selenium.commands;
 
-import cz.svjis.svjis.selenium.Constants;
 import cz.svjis.svjis.selenium.SvjisSeleniumException;
-import static cz.svjis.svjis.selenium.commands.Commands.clickAndWaitForClickable;
-import static cz.svjis.svjis.selenium.commands.Commands.fillIn;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -25,7 +22,6 @@ import org.openqa.selenium.WebDriver;
 public class EndUserCommands extends Commands {
     
     public static void voteInquiry(WebDriver driver, String vote, int i) throws SvjisSeleniumException {
-        Constants c = Constants.getInstance();
         clickAndWaitForClickable(driver, By.linkText("Články"), By.id("vote-submit"));
         driver.findElement(By.id(vote)).click();
         driver.findElement(By.id("vote-submit")).click();
@@ -33,7 +29,6 @@ public class EndUserCommands extends Commands {
     }
     
     public static void createArticleComment(WebDriver driver, String article, String commentText) throws SvjisSeleniumException {
-        Constants c = Constants.getInstance();
         clickAndWaitForClickable(driver, By.linkText("Články"), By.linkText(article));
         driver.findElement(By.linkText(article)).click();
         fillIn(driver.findElement(By.id("body")), commentText);
