@@ -34,5 +34,6 @@ public class Main {
         UseCases.doEndUserTest(driver);
         
         SeleniumUtils.close(driver);
+        System.out.println("Done!");
     }  
 }
