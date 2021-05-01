@@ -92,7 +92,7 @@ public class UseCases {
     public static void doEndUserTest(WebDriver driver) throws IOException, SvjisSeleniumException {
         Constants c = Constants.getInstance();
         
-        /* Petr */
+        /* Petr vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
         SeleniumUtils.takeSnapShot(driver, "euser01.png");
         EndUserCommands.voteInquiry(driver, "vote-1", 1);
@@ -100,7 +100,7 @@ public class UseCases {
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser03.png");
         
-        /* Jana */
+        /* Jana vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
         SeleniumUtils.takeSnapShot(driver, "euser04.png");
         EndUserCommands.voteInquiry(driver, "vote-1", 1);
@@ -108,7 +108,7 @@ public class UseCases {
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser06.png");
         
-        /* Jiri */
+        /* Jiri vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
         SeleniumUtils.takeSnapShot(driver, "euser07.png");
         EndUserCommands.voteInquiry(driver, "vote-3", 1);
@@ -116,7 +116,7 @@ public class UseCases {
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser09.png");
         
-        /* Tomas */
+        /* Tomas vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 6), c.getString("adm.user.password", 6));
         SeleniumUtils.takeSnapShot(driver, "euser10.png");
         EndUserCommands.voteInquiry(driver, "vote-2", 1);
@@ -124,12 +124,35 @@ public class UseCases {
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser12.png");
         
-        /* Article comment */
+        /* Jiri create article comment */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
         SeleniumUtils.takeSnapShot(driver, "euser13.png");
         EndUserCommands.createArticleComment(driver, c.getString("redaction.articles.header", 1) , "Dobrý den,\nprosím podívejte se na https://www.seznam.cz/\n S pozdravem " + c.getString("adm.user.email", 5));
         SeleniumUtils.takeSnapShot(driver, "euser14.png");
         AdminCommands.logoutUser(driver);
         SeleniumUtils.takeSnapShot(driver, "euser15.png");
+        
+        /* Jana create fault report */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
+        EndUserCommands.createFaultReport(driver, c.getString("fault.header", 1), c.getString("adm.entrance.ed", 1), c.getString("fault.body", 1));
+        EndUserCommands.addFaultReportAttachment(driver, c.getString("fault.header", 1), c.getString("fault.attachment", 1));
+        AdminCommands.logoutUser(driver);
+        
+        /* Petr create fault report */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
+        EndUserCommands.createFaultReport(driver, c.getString("fault.header", 2), c.getString("adm.entrance.ed", 2), c.getString("fault.body", 2));
+        AdminCommands.logoutUser(driver);
+        
+        /* Karel take fault report */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 3), c.getString("adm.user.password", 3));
+        EndUserCommands.takeFaultReport(driver, c.getString("fault.header", 1));
+        EndUserCommands.addFaultReportComment(driver, c.getString("fault.header", 1), c.getString("fault.comment", 1));
+        AdminCommands.logoutUser(driver);
+        
+        /* Karel close fault report */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 3), c.getString("adm.user.password", 3));
+        EndUserCommands.addFaultReportComment(driver, c.getString("fault.header", 1), "Hotovo");
+        EndUserCommands.closeFaultReport(driver, c.getString("fault.header", 1));
+        AdminCommands.logoutUser(driver);
     }
 }

@@ -11,9 +11,14 @@
  */
 package cz.svjis.svjis.selenium.commands;
 
+import cz.svjis.svjis.selenium.Constants;
 import cz.svjis.svjis.selenium.SvjisSeleniumException;
+
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  *
@@ -33,5 +38,59 @@ public class EndUserCommands extends Commands {
         driver.findElement(By.linkText(article)).click();
         fillIn(driver.findElement(By.id("body")), commentText);
         driver.findElement(By.id("submit")).click();
+    }
+    
+    public static void createFaultReport(WebDriver driver, String header, String entrance, String body) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.fault.reporting")), By.linkText(c.getString("menu.fault.reporting.new")));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.fault.reporting.new")), By.id("submit"));
+        fillIn(driver.findElement(By.id("subject-input")), header);
+        driver.findElement(By.id("entrance-input")).sendKeys(entrance);
+        fillIn(driver.findElement(By.id("body-textarea")), body);
+        driver.findElement(By.id("submit")).click();
+    }
+    
+    private static void goToFaultReport(WebDriver driver, String header) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.fault.reporting")), By.linkText(c.getString("menu.fault.reporting.new")));
+        
+        WebElement baseTable = driver.findElement(By.xpath("//table[@class='list']"));
+        List<WebElement> tableRows = baseTable.findElements(By.tagName("tr"));
+        int r = 0;
+        for(WebElement e : tableRows) {
+            r++;
+            if (e.getText().contains(header)) {
+                break;
+            }
+        }
+        clickAndWaitForClickable(driver, By.xpath("//table[@class='list']/tbody/tr[" + r + "]/td[1]"), By.id("submit"));
+    }
+    
+    public static void addFaultReportAttachment(WebDriver driver, String header, String attachment) throws SvjisSeleniumException {
+        goToFaultReport(driver, header);
+        
+        WebElement elem = driver.findElement(By.id("file-upload"));
+        elem.sendKeys(Constants.getInstance().getResourcePath(attachment));
+        driver.findElement(By.id("file-submit")).click();
+    }
+    
+    public static void takeFaultReport(WebDriver driver, String header) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        
+        goToFaultReport(driver, header);
+        driver.findElement(By.linkText(c.getString("menu.fault.reporting.take"))).click();
+    }
+    
+    public static void addFaultReportComment(WebDriver driver, String header, String comment) throws SvjisSeleniumException {
+        goToFaultReport(driver, header);
+        fillIn(driver.findElement(By.id("body")), comment);
+        driver.findElement(By.id("submit")).click();
+    }
+    
+    public static void closeFaultReport(WebDriver driver, String header) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        
+        goToFaultReport(driver, header);
+        driver.findElement(By.linkText(c.getString("menu.fault.reporting.close"))).click();
     }
 }
