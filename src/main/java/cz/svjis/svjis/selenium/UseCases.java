@@ -154,5 +154,16 @@ public class UseCases {
         EndUserCommands.addFaultReportComment(driver, c.getString("fault.header", 1), "Hotovo");
         EndUserCommands.closeFaultReport(driver, c.getString("fault.header", 1));
         AdminCommands.logoutUser(driver);
+        
+        /* Jana create advert */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
+        EndUserCommands.createAdvert(driver, c.getString("advert.header", 1), c.getString("advert.section", 1), c.getString("advert.body", 1));
+        EndUserCommands.addAdvertAttachment(driver, c.getString("advert.attachment", 1));
+        AdminCommands.logoutUser(driver);
+        
+        /* Jiri create advert */
+        AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
+        EndUserCommands.createAdvert(driver, c.getString("advert.header", 2), c.getString("advert.section", 2), c.getString("advert.body", 2));
+        AdminCommands.logoutUser(driver);
     }
 }

@@ -93,4 +93,24 @@ public class EndUserCommands extends Commands {
         goToFaultReport(driver, header);
         driver.findElement(By.linkText(c.getString("menu.fault.reporting.close"))).click();
     }
+    
+    public static void createAdvert(WebDriver driver, String header, String section, String body) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adverts")), By.linkText(c.getString("menu.adverts.new")));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adverts.new")), By.id("submit"));
+        fillIn(driver.findElement(By.id("header-input")), header);
+        driver.findElement(By.id("type-input")).sendKeys(section);
+        fillIn(driver.findElement(By.id("body-textarea")), body);
+        driver.findElement(By.id("submit")).click();
+    }
+    
+    public static void addAdvertAttachment(WebDriver driver, String attachment) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adverts")), By.linkText(c.getString("menu.adverts.edit")));
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adverts.edit")), By.id("file-submit"));
+        
+        WebElement elem = driver.findElement(By.id("file-upload"));
+        elem.sendKeys(Constants.getInstance().getResourcePath(attachment));
+        driver.findElement(By.id("file-submit")).click();
+    }
 }
