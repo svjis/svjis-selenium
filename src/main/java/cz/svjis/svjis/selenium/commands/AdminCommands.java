@@ -30,6 +30,7 @@ public class AdminCommands extends Commands {
         WebElement passwordInput = driver.findElement(By.id("password-input"));
         passwordInput.sendKeys(password);
         clickAndWaitForClickable(driver, By.id("login-submit"), By.id("logout-submit"));
+        waitAMoment();
     }
     
     public static void logoutUser(WebDriver driver) {

@@ -27,7 +27,8 @@ public class RedactionCommands extends Commands {
     public static void createArticle(WebDriver driver, int i) throws SvjisSeleniumException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Constants c = Constants.getInstance();
-        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.redaction")), By.partialLinkText(c.getString("redaction.articles")));
+        
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.redaction")), By.linkText(c.getString("redaction.articles")));
         clickAndWaitForClickable(driver, By.partialLinkText(c.getString("redaction.articles")), By.linkText(c.getString("redaction.articles.new")));
         clickAndWaitForClickable(driver, By.linkText(c.getString("redaction.articles.new")), By.id("submit"));
         

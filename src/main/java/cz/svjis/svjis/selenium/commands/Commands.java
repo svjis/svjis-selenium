@@ -22,6 +22,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @author jarberan
  */
 public class Commands {
+    
+    private static final int TMOUT_SEC = 15;
+    
     public static void getUrl(WebDriver driver, String url) {
         driver.get(url);
     }
@@ -42,7 +45,7 @@ public class Commands {
     }
     
     protected static void clickAndWaitForClickable(WebDriver driver, By clickBy, By expectedBy) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, TMOUT_SEC);
         driver.findElement(clickBy).click();
         wait.until(
             ExpectedConditions.or(
@@ -52,12 +55,20 @@ public class Commands {
     }
     
     protected static void clickAndWaitForValue(WebDriver driver, By clickBy, By expectedBy, String expectedValue) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, TMOUT_SEC);
         driver.findElement(clickBy).click();
         wait.until(
             ExpectedConditions.or(
                 ExpectedConditions.textToBe(expectedBy, expectedValue)
             )
         );
+    }
+    
+    protected static void waitAMoment() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
