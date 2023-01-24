@@ -63,6 +63,7 @@ public class SeleniumUtils {
             System.setProperty("webdriver.chrome.driver", path);
         } else {
             options.addArguments("--headless");
+            options.addArguments("window-size=1400,2100");
         }
         driver = new ChromeDriver(options);
         return driver;
