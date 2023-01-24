@@ -22,6 +22,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -55,12 +56,15 @@ public class SeleniumUtils {
     
     public static WebDriver getChromeDriver() throws SvjisSeleniumException {
         WebDriver driver;
+        ChromeOptions options = new ChromeOptions();
         String path = Constants.getInstance().getString("driver.chrome");
         File f = new File(path);
         if (f.exists()) {
             System.setProperty("webdriver.chrome.driver", path);
+        } else {
+            options.addArguments("--headless");
         }
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         return driver;
     }
 
