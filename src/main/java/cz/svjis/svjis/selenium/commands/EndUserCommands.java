@@ -70,7 +70,7 @@ public class EndUserCommands extends Commands {
         goToFaultReport(driver, header);
         
         WebElement elem = driver.findElement(By.id("file-upload"));
-        elem.sendKeys(Constants.getInstance().getResourcePath(attachment));
+        elem.sendKeys("/"+Constants.getInstance().getResourcePath(attachment));
         driver.findElement(By.id("file-submit")).click();
     }
     
@@ -110,7 +110,7 @@ public class EndUserCommands extends Commands {
         clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adverts.edit")), By.id("file-submit"));
         
         WebElement elem = driver.findElement(By.id("file-upload"));
-        elem.sendKeys(Constants.getInstance().getResourcePath(attachment));
+        elem.sendKeys("/"+Constants.getInstance().getResourcePath(attachment));
         driver.findElement(By.id("file-submit")).click();
     }
 }

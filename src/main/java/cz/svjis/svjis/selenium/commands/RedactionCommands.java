@@ -61,7 +61,7 @@ public class RedactionCommands extends Commands {
         String attachment = c.getString("redaction.articles.attachment", i);
         if ((attachment != null) && (!attachment.equals(""))) {
             WebElement elem = driver.findElement(By.id("file-upload"));
-            elem.sendKeys(Constants.getInstance().getResourcePath(attachment));
+            elem.sendKeys("/"+Constants.getInstance().getResourcePath(attachment));
             driver.findElement(By.id("file-submit")).click();
         }
     }
