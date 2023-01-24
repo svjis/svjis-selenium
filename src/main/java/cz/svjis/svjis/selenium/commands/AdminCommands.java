@@ -69,7 +69,7 @@ public class AdminCommands extends Commands {
         clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.linkText(c.getString("adm.building")));
         clickAndWaitForClickable(driver, By.linkText(c.getString("adm.building")), By.id("submit"));
         WebElement elem = driver.findElement(By.id("picture-upload"));
-        elem.sendKeys(Constants.class.getClassLoader().getResource("Header_1.png").toString());
+        elem.sendKeys("/"+Constants.getInstance().getResourcePath("Header_1.png"));
         driver.findElement(By.id("picture-submit")).click();
     }
     
