@@ -23,6 +23,10 @@ import org.openqa.selenium.WebDriver;
 public class Main {
     
     public static void main(String args[]) throws IOException, SvjisSeleniumException {
+        runTests();
+    }
+
+    public static void runTests() throws IOException, SvjisSeleniumException {
         //WebDriver driver = getGridDriver();
         //WebDriver driver = getFirefoxDriver()í;
         WebDriver driver = getChromeDriver();
@@ -35,5 +39,5 @@ public class Main {
         
         SeleniumUtils.close(driver);
         System.out.println("Done!");
-    }  
+    }
 }
