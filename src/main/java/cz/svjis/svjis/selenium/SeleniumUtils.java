@@ -55,7 +55,11 @@ public class SeleniumUtils {
     
     public static WebDriver getChromeDriver() throws SvjisSeleniumException {
         WebDriver driver;
-        System.setProperty("webdriver.chrome.driver", Constants.getInstance().getString("driver.chrome"));
+        String path = Constants.getInstance().getString("driver.chrome");
+        File f = new File(path);
+        if (f.exists()) {
+            System.setProperty("webdriver.chrome.driver", path);
+        }
         driver = new ChromeDriver();
         return driver;
     }
