@@ -12,6 +12,7 @@
 package cz.svjis.svjis.selenium.commands;
 
 import cz.svjis.svjis.selenium.Constants;
+import cz.svjis.svjis.selenium.SeleniumUtils;
 import cz.svjis.svjis.selenium.SvjisSeleniumException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -61,7 +62,7 @@ public class RedactionCommands extends Commands {
         String attachment = c.getString("redaction.articles.attachment", i);
         if ((attachment != null) && (!attachment.equals(""))) {
             WebElement elem = driver.findElement(By.id("file-upload"));
-            elem.sendKeys("/"+Constants.getInstance().getResourcePath(attachment));
+            elem.sendKeys(SeleniumUtils.getResourcePath(attachment));
             driver.findElement(By.id("file-submit")).click();
         }
     }

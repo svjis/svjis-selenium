@@ -94,4 +94,12 @@ public class SeleniumUtils {
         //Copy file at destination
         FileUtils.copyFile(SrcFile, DestFile);
     }
+
+    public static String getResourcePath(String resource) throws SvjisSeleniumException {
+        String path = Constants.getInstance().getResourcePath(resource);
+        if (!path.startsWith("/") && !path.startsWith("C:/")) {
+            path = String.format("/%s", path);
+        }
+        return path;
+    }
 }

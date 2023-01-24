@@ -12,6 +12,7 @@
 package cz.svjis.svjis.selenium.commands;
 
 import cz.svjis.svjis.selenium.Constants;
+import cz.svjis.svjis.selenium.SeleniumUtils;
 import cz.svjis.svjis.selenium.SvjisSeleniumException;
 import java.util.List;
 import org.openqa.selenium.By;
@@ -69,7 +70,7 @@ public class AdminCommands extends Commands {
         clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.linkText(c.getString("adm.building")));
         clickAndWaitForClickable(driver, By.linkText(c.getString("adm.building")), By.id("submit"));
         WebElement elem = driver.findElement(By.id("picture-upload"));
-        elem.sendKeys("/"+Constants.getInstance().getResourcePath("Header_1.png"));
+        elem.sendKeys(SeleniumUtils.getResourcePath("Header_1.png"));
         driver.findElement(By.id("picture-submit")).click();
     }
     
