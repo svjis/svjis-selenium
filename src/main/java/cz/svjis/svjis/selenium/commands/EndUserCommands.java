@@ -43,12 +43,17 @@ public class EndUserCommands extends Commands {
     
     public static void createFaultReport(WebDriver driver, String header, String entrance, String body) throws SvjisSeleniumException {
         Constants c = Constants.getInstance();
-        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.fault.reporting")), By.linkText(c.getString("menu.fault.reporting.new")));
+        goToFaultReports(driver);
         clickAndWaitForClickable(driver, By.linkText(c.getString("menu.fault.reporting.new")), By.id("submit"));
         fillIn(driver.findElement(By.id("subject-input")), header);
         driver.findElement(By.id("entrance-input")).sendKeys(entrance);
         fillIn(driver.findElement(By.id("body-textarea")), body);
         driver.findElement(By.id("submit")).click();
+    }
+
+    public static void goToFaultReports(WebDriver driver) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.fault.reporting")), By.linkText(c.getString("menu.fault.reporting.new")));
     }
     
     private static void goToFaultReport(WebDriver driver, String header) throws SvjisSeleniumException {
