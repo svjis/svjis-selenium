@@ -132,6 +132,11 @@ public class AdminCommands extends Commands {
         }
         clickAndWaitForValue(driver, By.id("submit"), By.className("message"), c.getString("adm.user.saved"));
     }
+
+    public static void goToUserList(WebDriver driver) throws SvjisSeleniumException {
+        Constants c = Constants.getInstance();
+        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.user")));
+    }
     
     public static void fillInBoard(WebDriver driver, int i) throws SvjisSeleniumException {
         Constants c = Constants.getInstance();

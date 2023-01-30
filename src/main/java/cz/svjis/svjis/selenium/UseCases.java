@@ -27,50 +27,53 @@ public class UseCases {
         Constants c = Constants.getInstance();
         
         AdminCommands.loginUser(driver, c.getString("app.adm.user"), c.getString("app.adm.pass"));
-        SeleniumUtils.takeSnapShot(driver, "param01.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-01-login.png");
         AdminCommands.fillInCompany(driver);
+        SeleniumUtils.takeSnapShot(driver, "1-param-02-company.png");
         AdminCommands.uploadPicture(driver);
-        SeleniumUtils.takeSnapShot(driver, "param02.png");
         AdminCommands.fillInBuilding(driver);
-        SeleniumUtils.takeSnapShot(driver, "param03.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-03-building.png");
         AdminCommands.fillInEntrances(driver, 1);
         AdminCommands.fillInEntrances(driver, 2);
-        SeleniumUtils.takeSnapShot(driver, "param04.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-04-entrances.png");
         AdminCommands.fillInBuildingUnits(driver, 1);
         AdminCommands.fillInBuildingUnits(driver, 2);
         AdminCommands.fillInBuildingUnits(driver, 3);
         AdminCommands.fillInBuildingUnits(driver, 4);
-        SeleniumUtils.takeSnapShot(driver, "param05.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-05-building-units.png");
         AdminCommands.fillInRoles(driver, 1);
-        SeleniumUtils.takeSnapShot(driver, "param06.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-06-roles.png");
         AdminCommands.fillInUsers(driver, 1);
         AdminCommands.fillInUsers(driver, 2);
         AdminCommands.fillInUsers(driver, 3);
         AdminCommands.fillInUsers(driver, 4);
         AdminCommands.fillInUsers(driver, 5);
         AdminCommands.fillInUsers(driver, 6);
-        SeleniumUtils.takeSnapShot(driver, "param07.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-07-user.png");
+        AdminCommands.goToUserList(driver);
+        SeleniumUtils.takeSnapShot(driver, "1-param-09-users.png");
         AdminCommands.fillInBoard(driver, 1);
         AdminCommands.fillInBoard(driver, 2);
         AdminCommands.fillInBoard(driver, 3);
         AdminCommands.fillInBoard(driver, 4);
-        SeleniumUtils.takeSnapShot(driver, "param08.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-10-board.png");
         AdminCommands.fillInUserUnit(driver, 1); 
         AdminCommands.fillInUserUnit(driver, 2);
         AdminCommands.fillInUserUnit(driver, 3);
         AdminCommands.fillInUserUnit(driver, 4);
         AdminCommands.fillInUserUnit(driver, 5);
-        SeleniumUtils.takeSnapShot(driver, "param09.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-11-users-unit.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "param10.png");
+        SeleniumUtils.takeSnapShot(driver, "1-param-12-logout.png");
     }
     
     public static void doRedactionTest(WebDriver driver) throws IOException, SvjisSeleniumException {
         Constants c = Constants.getInstance();
         
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
-        SeleniumUtils.takeSnapShot(driver, "redaction01.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-01-login.png");
         RedactionCommands.createArticle(driver, 1);
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-02-create-article.png");
         AdminCommands.logoutUser(driver);
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 4), c.getString("adm.user.password", 4));
         RedactionCommands.createArticle(driver, 2);
@@ -79,14 +82,14 @@ public class UseCases {
         RedactionCommands.createArticle(driver, 3);
         AdminCommands.logoutUser(driver);
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
-        SeleniumUtils.takeSnapShot(driver, "redaction02.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-03-login.png");
         RedactionCommands.createNews(driver, 1);
         RedactionCommands.createNews(driver, 2);
-        SeleniumUtils.takeSnapShot(driver, "redaction03.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-04-news.png");
         RedactionCommands.createInquiry(driver, 1);
-        SeleniumUtils.takeSnapShot(driver, "redaction04.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-05-inquiry.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "redaction05.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-06-logout.png");
     }
     
     public static void doEndUserTest(WebDriver driver) throws IOException, SvjisSeleniumException {
