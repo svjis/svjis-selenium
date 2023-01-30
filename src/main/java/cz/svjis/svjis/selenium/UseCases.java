@@ -97,76 +97,85 @@ public class UseCases {
         
         /* Petr vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
-        SeleniumUtils.takeSnapShot(driver, "euser01.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-01-login.png");
         EndUserCommands.voteInquiry(driver, "vote-1", 1);
-        SeleniumUtils.takeSnapShot(driver, "euser02.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-02-vote.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "euser03.png");
         
         /* Jana vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
-        SeleniumUtils.takeSnapShot(driver, "euser04.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-03-login.png");
         EndUserCommands.voteInquiry(driver, "vote-1", 1);
-        SeleniumUtils.takeSnapShot(driver, "euser05.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-04-vote.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "euser06.png");
         
         /* Jiri vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
-        SeleniumUtils.takeSnapShot(driver, "euser07.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-05-login.png");
         EndUserCommands.voteInquiry(driver, "vote-3", 1);
-        SeleniumUtils.takeSnapShot(driver, "euser08.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-06-vote.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "euser09.png");
         
         /* Tomas vote inquiry */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 6), c.getString("adm.user.password", 6));
-        SeleniumUtils.takeSnapShot(driver, "euser10.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-07-login.png");
         EndUserCommands.voteInquiry(driver, "vote-2", 1);
-        SeleniumUtils.takeSnapShot(driver, "euser11.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-08-vote.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "euser12.png");
         
         /* Jiri create article comment */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
-        SeleniumUtils.takeSnapShot(driver, "euser13.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-09-login.png");
         EndUserCommands.createArticleComment(driver, c.getString("redaction.articles.header", 1) , "Dobrý den,\nprosím podívejte se na https://www.seznam.cz/\n S pozdravem " + c.getString("adm.user.email", 5));
-        SeleniumUtils.takeSnapShot(driver, "euser14.png");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-10-article-comment.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "euser15.png");
         
         /* Jana create fault report */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-11-login.png");
         EndUserCommands.createFaultReport(driver, c.getString("fault.header", 1), c.getString("adm.entrance.ed", 1), c.getString("fault.body", 1));
         EndUserCommands.addFaultReportAttachment(driver, c.getString("fault.header", 1), c.getString("fault.attachment", 1));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-12-create-fault.png");
         AdminCommands.logoutUser(driver);
         
         /* Petr create fault report */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-13-login.png");
         EndUserCommands.createFaultReport(driver, c.getString("fault.header", 2), c.getString("adm.entrance.ed", 2), c.getString("fault.body", 2));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-14-create-fault.png");
         AdminCommands.logoutUser(driver);
         
         /* Karel take fault report */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 3), c.getString("adm.user.password", 3));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-15-login.png");
         EndUserCommands.takeFaultReport(driver, c.getString("fault.header", 1));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-16-take-fault.png");
         EndUserCommands.addFaultReportComment(driver, c.getString("fault.header", 1), c.getString("fault.comment", 1));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-17-create-fault-comment.png");
         AdminCommands.logoutUser(driver);
         
         /* Karel close fault report */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 3), c.getString("adm.user.password", 3));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-18-login.png");
         EndUserCommands.addFaultReportComment(driver, c.getString("fault.header", 1), "Hotovo");
+        SeleniumUtils.takeSnapShot(driver, "3-euser-19-create-fault-comment.png");
         EndUserCommands.closeFaultReport(driver, c.getString("fault.header", 1));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-20-close-fault.png");
         AdminCommands.logoutUser(driver);
         
         /* Jana create advert */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 2), c.getString("adm.user.password", 2));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-21-login.png");
         EndUserCommands.createAdvert(driver, c.getString("advert.header", 1), c.getString("advert.section", 1), c.getString("advert.body", 1));
         EndUserCommands.addAdvertAttachment(driver, c.getString("advert.attachment", 1));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-22-create-advert.png");
         AdminCommands.logoutUser(driver);
         
         /* Jiri create advert */
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-23-login.png");
         EndUserCommands.createAdvert(driver, c.getString("advert.header", 2), c.getString("advert.section", 2), c.getString("advert.body", 2));
+        SeleniumUtils.takeSnapShot(driver, "3-euser-24-create-advert.png");
         AdminCommands.logoutUser(driver);
     }
 }
