@@ -101,8 +101,7 @@ public class AdminCommands extends Commands {
     
     public static void fillInUsers(WebDriver driver, int i) throws SvjisSeleniumException {
         Constants c = Constants.getInstance();
-        clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.user")));
-        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.user")), By.linkText(c.getString("adm.user.new")));
+        goToUserList(driver);
         
         clickAndWaitForClickable(driver, By.linkText(c.getString("adm.user.new")), By.id("submit"));
         
@@ -136,6 +135,7 @@ public class AdminCommands extends Commands {
     public static void goToUserList(WebDriver driver) throws SvjisSeleniumException {
         Constants c = Constants.getInstance();
         clickAndWaitForClickable(driver, By.linkText(c.getString("menu.adm")), By.partialLinkText(c.getString("adm.user")));
+        clickAndWaitForClickable(driver, By.partialLinkText(c.getString("adm.user")), By.linkText(c.getString("adm.user.new")));
     }
     
     public static void fillInBoard(WebDriver driver, int i) throws SvjisSeleniumException {
