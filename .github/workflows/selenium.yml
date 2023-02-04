@@ -27,7 +27,7 @@ jobs:
     - name: Create schema
       run: |
         cd svjis-docker/docker-compose
-        docker cp ../../db_schema/database.sql svjis_db:/firebird/
+        curl -k -L -o ./database.sql -L https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql
         docker cp ./create-schema.sh svjis_db:/firebird/
         docker exec svjis_db bash "/firebird/create-schema.sh"
 
