@@ -75,21 +75,27 @@ public class UseCases {
         RedactionCommands.createArticle(driver, 1);
         SeleniumUtils.takeSnapShot(driver, "2-redaction-02-create-article.png");
         AdminCommands.logoutUser(driver);
+
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 4), c.getString("adm.user.password", 4));
         RedactionCommands.createArticle(driver, 2);
+        EndUserCommands.goToArticle(driver, c.getString("redaction.articles.header", 2));
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-03-create-article.png");
         AdminCommands.logoutUser(driver);
+
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 5), c.getString("adm.user.password", 5));
         RedactionCommands.createArticle(driver, 3);
         AdminCommands.logoutUser(driver);
+
         AdminCommands.loginUser(driver, c.getString("adm.user.login", 1), c.getString("adm.user.password", 1));
-        SeleniumUtils.takeSnapShot(driver, "2-redaction-03-login.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-04-login.png");
         RedactionCommands.createNews(driver, 1);
         RedactionCommands.createNews(driver, 2);
-        SeleniumUtils.takeSnapShot(driver, "2-redaction-04-news.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-05-news.png");
         RedactionCommands.createInquiry(driver, 1);
-        SeleniumUtils.takeSnapShot(driver, "2-redaction-05-inquiry.png");
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-06-inquiry.png");
         AdminCommands.logoutUser(driver);
-        SeleniumUtils.takeSnapShot(driver, "2-redaction-06-logout.png");
+
+        SeleniumUtils.takeSnapShot(driver, "2-redaction-07-logout.png");
     }
     
     public static void doEndUserTest(WebDriver driver) throws IOException, SvjisSeleniumException {
