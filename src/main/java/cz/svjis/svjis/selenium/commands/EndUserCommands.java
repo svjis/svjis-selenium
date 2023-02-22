@@ -33,10 +33,14 @@ public class EndUserCommands extends Commands {
         driver.findElement(By.id("vote-submit")).click();
         driver.findElement(By.id("vote-result"));
     }
-    
-    public static void createArticleComment(WebDriver driver, String article, String commentText) throws SvjisSeleniumException {
+
+    public static void goToArticle(WebDriver driver, String article) throws SvjisSeleniumException {
         clickAndWaitForClickable(driver, By.linkText("Články"), By.linkText(article));
         driver.findElement(By.linkText(article)).click();
+    }
+    
+    public static void createArticleComment(WebDriver driver, String article, String commentText) throws SvjisSeleniumException {
+        goToArticle(driver, article);
         fillIn(driver.findElement(By.id("body")), commentText);
         driver.findElement(By.id("submit")).click();
     }
